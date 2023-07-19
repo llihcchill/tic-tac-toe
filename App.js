@@ -1,7 +1,9 @@
-function Square() {
+function Square(
+  { value } /* <- this is a prop, you can pass data through it/variable*/
+) {
   // function doesn't contain export so it will not be rendered
   // and is used for the client-side logic
-  return <button className="square">1</button>;
+  return <button className="square">{value}</button>;
 }
 
 export default function Board() {
@@ -17,21 +19,24 @@ export default function Board() {
     // Square() function, take note very cool!!
 
     // don't need to add a second ending bracket for functions
+
+    // to add data into the {value} prop, you can set it from the
+    // function calls
     <>
       <div className="board-row">
-        <Square />
-        <Square />
-        <Square />
+        <Square value="1" />
+        <Square value="2" />
+        <Square value="3" />
       </div>
       <div className="board-row">
-        <Square />
-        <Square />
-        <Square />
+        <Square value="4" />
+        <Square value="5" />
+        <Square value="6" />
       </div>
       <div className="board-row">
-        <Square />
-        <Square />
-        <Square />
+        <Square value="7" />
+        <Square value="8" />
+        <Square value="9" />
       </div>
     </>
   );
