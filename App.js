@@ -1,9 +1,21 @@
 function Square(
   { value } /* <- this is a prop, you can pass data through it/variable*/
 ) {
+  function handleClick() {
+    console.log("clicked!");
+  }
   // function doesn't contain export so it will not be rendered
   // and is used for the client-side logic
-  return <button className="square">{value}</button>;
+  return (
+    <button
+      classname="square"
+      onClick={
+        handleClick
+      } /* onClick and related functions are supported with functions */
+    >
+      {value}
+    </button>
+  );
 }
 
 export default function Board() {
