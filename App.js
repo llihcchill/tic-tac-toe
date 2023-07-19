@@ -15,21 +15,23 @@ export default function Board() {
 
     // inside of fragment, the <Square></Square> things are calling the
     // Square() function, take note very cool!!
+
+    // don't need to add a second ending bracket for functions
     <>
       <div className="board-row">
-        <Square></Square>
-        <Square></Square>
-        <Square></Square>
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className="board-row">
-        <Square></Square>
-        <Square></Square>
-        <Square></Square>
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className="board-row">
-        <Square></Square>
-        <Square></Square>
-        <Square></Square>
+        <Square />
+        <Square />
+        <Square />
       </div>
     </>
   );
