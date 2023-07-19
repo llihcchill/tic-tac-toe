@@ -1,14 +1,22 @@
-function Square(
-  { value } /* <- this is a prop, you can pass data through it/variable*/
-) {
+import { useState } from "react";
+// this is a special function that practically lets react 'remember' things
+
+function Square() {
+  const [value, setValue] = useState(null);
+  // value = the value and setValue = change the value of value
+  // the null in useState(null) is the default value of value
+
   function handleClick() {
-    console.log("clicked!");
+    setValue("X");
+    // setValue is not a library function, it is the function that
+    // is used in the useState constant value and it is changing
+    // value to be equal to X and not 1 then 2 then 3 etc.
   }
   // function doesn't contain export so it will not be rendered
   // and is used for the client-side logic
   return (
     <button
-      classname="square"
+      className="square"
       onClick={
         handleClick
       } /* onClick and related functions are supported with functions */
@@ -36,20 +44,23 @@ export default function Board() {
     // function calls
     <>
       <div className="board-row">
-        <Square value="1" />
-        <Square value="2" />
-        <Square value="3" />
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className="board-row">
-        <Square value="4" />
-        <Square value="5" />
-        <Square value="6" />
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className="board-row">
-        <Square value="7" />
-        <Square value="8" />
-        <Square value="9" />
+        <Square />
+        <Square />
+        <Square />
       </div>
     </>
   );
 }
+
+// props are useful for sharing data from parent to children
+// it's not quite for dynamic data, just for data transport
