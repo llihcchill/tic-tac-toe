@@ -42,6 +42,9 @@ export default function Board() {
   // here setSquares can be used to set each square by their array place
 
   function handleClick(i) {
+    if (squares[i] || calculateWinner(squares)) {
+      return;
+    }
     const nextSquares = squares.slice();
 
     // like in PHP, checking if the variable or statement is true or not
@@ -92,3 +95,32 @@ export default function Board() {
 
 // props are useful for sharing data from parent to children
 // it's not quite for dynamic data, just for data transport
+
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+  // these are all the possible winning states in tic tac toe put into
+  // an array
+
+  // for each possible winning combination
+  for (let i = 0; i < lines.length; i++) {
+    // create a variable that holds the data in the array but in variable form
+    const [a, b, c] = lines[i];
+    // check if the squares[] array is idential to one of the winning possibilities
+    // in the lines array
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      // if so return the winning possibility
+      return squares[a];
+    }
+  }
+  // if the game has not been won, it does nothing
+  return null;
+}
