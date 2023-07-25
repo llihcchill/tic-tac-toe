@@ -32,7 +32,10 @@ export default function Board() {
   // children via props. This keeps the child components in sync
   // with each other and with their parent."
 
-  // creates an array called squares and setSquares
+  // creates a boolean using useState
+  const [xIsNext, setXIsNext] = useState(true);
+
+  // creates an array called squares and setSquares also using useState
   const [squares, setSquares] = useState(Array(9).fill(null));
 
   // now squares can be used to display the squares' state whereas
@@ -40,9 +43,17 @@ export default function Board() {
 
   function handleClick(i) {
     const nextSquares = squares.slice();
+
+    // like in PHP, checking if the variable or statement is true or not
+    // is easy by just putting the variable there or if not putting an ! there
+    if (xIsNext) {
+      nextSquares[i] = "X";
+    } else {
+      nextSquares[i] = "O";
+    }
     // .slice() function copies the array practically
-    nextSquares[i] = "X";
     setSquares(nextSquares);
+    setXIsNext(!xIsNext);
     // remember setSquares is a function from the useState function
     // this is also where all the game logic will go
   }
