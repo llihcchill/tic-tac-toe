@@ -61,6 +61,15 @@ export default function Board() {
     // this is also where all the game logic will go
   }
 
+  const winner = calculateWinner(squares);
+  let status;
+  // same thing with PHP here in the if statement
+  if (winner) {
+    status = "Winner: " + winner;
+  } else {
+    status = "Next player: " + (xIsNext ? "X" : "O");
+  }
+
   return (
     // a function cannot return multiple JSX elements at once
     // in order to actually return multiple, you can wrap all of the
@@ -124,3 +133,4 @@ function calculateWinner(squares) {
   // if the game has not been won, it does nothing
   return null;
 }
+
